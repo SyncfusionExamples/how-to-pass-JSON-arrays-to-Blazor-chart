@@ -96,6 +96,7 @@ protected async override Task OnInitializedAsync()
 ```
 
 The following screenshot illustrates the result of RangeStepArea  chart by using JSON data.
+
 **Output:**
 
 ![](/Json-data-binding.png)
