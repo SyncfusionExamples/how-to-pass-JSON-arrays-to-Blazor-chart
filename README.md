@@ -29,7 +29,7 @@ public ChartData[] ChartPoints { get; set; }
 
 **Step 3**: Get data from JSON file and get stored in Array using GetFromJsonAsync method.
  
-**JSON** data cannot be bound directly into [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts),  so we should deserialize the JSON data to a bindable format. 
+**JSON** data cannot be bound directly into [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts), so we should deserialize the JSON data to a bindable format. 
 The following steps explain  how to pass JSON data to [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts).
 **Step 1**: Import the following namespace in the razor file and store the JSON file inside wwwroot folder.
 
@@ -127,7 +127,7 @@ protected async override Task OnInitializedAsync()
 The following screenshot illustrates the result of RangeStepArea  chart by using JSON data.
 **Output:**
 
-![](https://github.com/SyncfusionExamples/how-to-pass-JSON-arrays-to-Blazor-chart/blob/main/)
+![](/Json-data-binding.png)
 
 **Conclusion**
 I hope you enjoyed learning how to customize Axis range in Blazor Chart Component.
