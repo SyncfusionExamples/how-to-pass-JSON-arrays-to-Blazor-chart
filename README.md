@@ -1,9 +1,10 @@
 # how-to-pass-JSON-arrays-to-Blazor-chart
  
 **JSON** data cannot be bound directly into [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts), so we should deserialize the JSON data to a bindable format. 
+
 The following steps explain  how to pass JSON data to [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts).
 
-**Step 1**: Import the following namespace in the razor file and store the JSON file inside wwwroot folder.
+**Step 1**: Import and inject the following namespace in the razor file and store the JSON file inside wwwroot folder.
 
 ```cshtml
 @inject NavigationManager NavigationManager
