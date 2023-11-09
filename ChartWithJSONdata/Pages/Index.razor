@@ -29,8 +29,7 @@
     public ChartData[] ChartPoints { get; set; }
 
     protected async override Task OnInitializedAsync()
-    {
-        ChartPoints = new ChartData[] { };
+    {        
         ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
     }  
 
