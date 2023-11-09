@@ -7,13 +7,16 @@ The following steps explain  how to pass JSON data to [Blazor Charts](https://ww
 **Step 1**: Import and inject the following namespace in the razor file and store the JSON file inside wwwroot folder.
 
 ```cshtml
+
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 @using System.Net.Http.Json
+
 ```
 **Step 2**: Create a Class and Array to store the JSON data as below.
 
 ```cshtml
+
 public class ChartData
 {
     public string X { get; set; }
@@ -30,8 +33,7 @@ public ChartData[] ChartPoints { get; set; }
 ```cshtml
 
 protected async override Task OnInitializedAsync()
-{
-    ChartPoints = new ChartData[] { };
+{     
     ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
 }  
 
@@ -87,8 +89,7 @@ protected async override Task OnInitializedAsync()
     public ChartData[] ChartPoints { get; set; }
 
     protected async override Task OnInitializedAsync()
-    {
-        ChartPoints = new ChartData[] { };
+    {         
         ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
     }  
 
