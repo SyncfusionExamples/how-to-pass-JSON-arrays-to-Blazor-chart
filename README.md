@@ -1,4 +1,8 @@
 # How-to-pass-JSON-arrays-to-Blazor-chart
+
+This article explains how to bind the values from JSON array into blazor chart.
+
+**Creating Blazor RangeStepArea chart using JSON array**
  
 **JSON** data cannot be bound directly into [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts), Therefore, it is necessary to convert the JSON data into a format that can be easily bound.
 
@@ -117,7 +121,7 @@ You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blaz
 
 For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
 
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [Direct-Trac](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
 
 
 
