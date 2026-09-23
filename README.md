@@ -1,127 +1,79 @@
-# How-to-pass-JSON-arrays-to-Blazor-chart
+# How to Pass JSON Arrays to a Syncfusion Blazor Chart
 
-This article explains how to bind the values from JSON array into blazor chart.
+## Overview
 
-**Creating Blazor RangeStepArea chart using JSON array**
- 
-**JSON** data cannot be bound directly into [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts), Therefore, it is necessary to convert the JSON data into a format that can be easily bound.
+This sample demonstrates how to load chart data from a JSON file and display it in a Syncfusion [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts). The application retrieves JSON data using `HttpClient`, deserializes it into a strongly typed model, and binds the resulting collection to a chart series.
 
-The following steps explain  how to pass JSON data to [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts).
+This approach is useful when chart data is stored in external JSON files or provided through web APIs. By converting JSON content into a .NET model, the chart can efficiently consume and visualize the data while maintaining strong typing and IntelliSense support.
 
-**Step 1**: Import and inject the following namespace in the razor file and store the JSON file inside wwwroot folder.
+## Key Features
 
-```cshtml
+- Uses `Http.GetFromJsonAsync(...)` to load JSON data.
+- Uses `NavigationManager.BaseUri` to resolve the JSON file location.
+- Defines a strongly typed `ChartData` model with:
+  - `X`
+  - `High`
+  - `Low`
+- Stores deserialized records in a `ChartData[]` collection.
+- Loads data during `OnInitializedAsync()`.
+- Binds the JSON-derived collection to a Blazor chart series.
+- Demonstrates rendering a Range Step Area chart from external JSON data.
 
-@inject NavigationManager NavigationManager
-@inject HttpClient Http
-@using System.Net.Http.Json
+## Prerequisites
 
-```
-**Step 2**: Create a Class and Array to store the JSON data as below.
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) compatible with the project's target framework
 
-```cshtml
+## How to Run the Project
+ 
+**Visual Studio 2022**
+ 
+1. Clone the repository.
+2. Open Visual Studio 2022.
+3. Select **Open a project or solution**.
+4. Browse to the project file:
+ 
+`ChartWithJSONdata.csproj`
+ 
+5. Restore NuGet packages if prompted.
+6. Build the project.
+7. Run the application using `Ctrl+F5`.
 
-public class ChartData
-{
-    public string X { get; set; }
-    public double High { get; set; }
-    public double Low { get; set; }
-}
+**Visual Studio Code**
 
-public ChartData[] ChartPoints { get; set; }
+1. Clone the repository.
+2. Open the repository folder in Visual Studio Code.
+3. Open the integrated terminal.
+4. Navigate to the project directory:
 
-```
-
-**Step 3**: Get data from JSON file and get stored in Array using GetFromJsonAsync method.
-
-```cshtml
-
-protected async override Task OnInitializedAsync()
-{     
-    ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
-}  
-
-```
-
-**Step 4**: Bind the JSON data stored in ChartPoints to the chart series.
-
-```cshtml
-
-<SfChart>
-
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@ChartPoints" XName="X" High="High" Low="Low"  Opacity="0.5" Type="ChartSeriesType.RangeStepArea">             
-        </ChartSeries>
-    </ChartSeriesCollection>
- 
-</SfChart>
-
+```bash
+cd ChartWithJSONdata
 ```
 
-## Blazor Chart with JSON data:
+5. Restore packages:
 
-**Index.razor**
-
-```cshtml
-
-@using Syncfusion.Blazor.Charts
-@inject NavigationManager NavigationManager 
-@inject HttpClient Http 
-@using System.Net.Http.Json
- 
-<SfChart>    
-     
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Format="dd MMM">
-        <ChartAxisMajorGridLines Width="0"/>
-    </ChartPrimaryXAxis>
-
-    <ChartPrimaryYAxis LabelFormat="{value}˚C" Interval="5" Minimum="-5" Maximum="25">
-        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-        <ChartAxisMajorTickLines Width="0"/>
-    </ChartPrimaryYAxis>
-
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@ChartPoints" XName="X" High="High" Low="Low"  Opacity="0.5" Type="ChartSeriesType.RangeStepArea">                             
-        </ChartSeries>
-    </ChartSeriesCollection>     
-
-</SfChart>
-
-@code{
-
-    public string BorderColor { get; set; }    
-    public ChartData[] ChartPoints { get; set; }
-
-    protected async override Task OnInitializedAsync()
-    {         
-        ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
-    }  
-
-    public class ChartData
-    {
-        public string X { get; set; }
-        public double High { get; set; }
-        public double Low { get; set; }
-    }
-}
-
+```bash
+dotnet restore
 ```
 
-The following screenshot illustrates the result of RangeStepArea  chart by using JSON data.
+6. Run the application:
 
-**Output:**
+```bash
+dotnet run
+```
 
-![](/Json-data-binding.png)
+7. Open the URL displayed in the terminal.
 
-**Conclusion**
+## Project Structure
 
-I hope you enjoyed learning how to pass JSON array in Blazor Chart Component.
+`ChartWithJSONdata/Pages/Index.razor` - Hosts the chart, loads JSON data, defines the `ChartData` model, and binds the collection to the chart series.
 
-You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
+## Support and Feedback
 
-For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
+- For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
+- To report an issue specific to this sample, open a GitHub issue in this repository.
+- For feature documentation, see the Syncfusion Blazor Chart documentation: https://help.syncfusion.com/chart-sdk/blazor/charts/getting-started
 
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+## License
 
-
-
+This is a Syncfusion sample project provided to demonstrate product usage. Review the [Syncfusion license terms](https://www.syncfusion.com/sales/pricing?category=ui-components) before using Syncfusion components in your own applications.
